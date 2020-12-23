@@ -1,0 +1,59 @@
+﻿<Window x:Class="InvestmentCheck.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InvestmentCheck"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button Content="Refresh price" HorizontalAlignment="Left" Margin="665,69,0,0" VerticalAlignment="Top" Width="117" Height="40"/>
+        <ListBox ItemsSource="{Binding Path=InvestmentList}" HorizontalContentAlignment="Stretch">
+            <ListBox.Template>
+                <ControlTemplate>
+                    <DockPanel LastChildFill="True">
+                        <Grid DockPanel.Dock="Top" Height="30">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="50"></ColumnDefinition>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0">Date</Label>
+                            <Label Grid.Column="1">Coin</Label>
+                            <Label Grid.Column="2">Amount</Label>
+                            <Label Grid.Column="3">Price Per coin</Label>
+                            <Label Grid.Column="4">Investment Value</Label>
+                            <Label Grid.Column="5">Invest amount</Label>
+                        </Grid>
+                        <ItemsPresenter></ItemsPresenter>
+                    </DockPanel>
+                </ControlTemplate>
+            </ListBox.Template>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="0,2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="{Binding Path=Date}" Grid.Column="0"></Label>
+                        <Label Content="{Binding Path=CoinType}" Grid.Column="1"></Label>
+                        <Label Content="{Binding Path=Amount}" Grid.Column="2"></Label>
+                        <Label Content="{Binding Path=PricePerCoin}" Grid.Column="3"></Label>
+                        <Label Content="{Binding Path=InvestmentValue}" Grid.Column="4"></Label>
+                        <Label Content="{Binding Path=InvestedAmound}" Grid.Column="5"></Label>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Content="Add new" Click="CreateNewInvestment" HorizontalAlignment="Left" Margin="663,321,0,0" VerticalAlignment="Top" Width="119" Height="38"/>
+
+    </Grid>
+</Window>
