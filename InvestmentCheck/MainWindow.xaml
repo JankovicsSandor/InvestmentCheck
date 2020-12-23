@@ -8,7 +8,19 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Button Content="Refresh price" HorizontalAlignment="Left" Margin="665,69,0,0" VerticalAlignment="Top" Width="117" Height="40"/>
-        <ListBox ItemsSource="{Binding Path=InvestmentList}" HorizontalContentAlignment="Stretch">
+        <ListBox ItemsSource="{Binding Path=InvestmentList}" HorizontalContentAlignment="Stretch" Margin="10,10,140,21">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=IsNegative}" Value="True">
+                            <Setter Property="Background" Value="Green" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=IsNegative}" Value="False">
+                            <Setter Property="Background" Value="Red" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ListBox.ItemContainerStyle>
             <ListBox.Template>
                 <ControlTemplate>
                     <DockPanel LastChildFill="True">

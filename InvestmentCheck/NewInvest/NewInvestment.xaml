@@ -13,6 +13,7 @@
         <DatePicker SelectedDate="{Binding Path=InvestmentTime}" HorizontalAlignment="Left" Margin="176,67,0,0" VerticalAlignment="Top" Width="300"/>
         <ComboBox HorizontalAlignment="Left" ItemsSource="{Binding Path=CoinTypeList}" SelectedValue="{Binding Path=SelectedCoin}" Margin="176,128,0,0" VerticalAlignment="Top" Width="300"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="176,180,0,0" TextWrapping="Wrap" Text="{Binding Path=PricePerCoin}" VerticalAlignment="Top" Width="300"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="176,227,0,0" TextWrapping="Wrap" Text="{Binding CoinAmount}" VerticalAlignment="Top" Width="300"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="176,272,0,0" TextWrapping="Wrap" Text="{Binding Path=InvestmentTotal}" VerticalAlignment="Top" Width="300"/>
         <Label Content="Investment value" HorizontalAlignment="Left" Margin="597,111,0,0" VerticalAlignment="Top" Width="123"/>
         <Label HorizontalAlignment="Left" Margin="626,177,0,0" VerticalAlignment="Top"/>
@@ -24,6 +25,5 @@
         <Label Content="Price Per coin:" HorizontalAlignment="Left" Margin="22,177,0,0" VerticalAlignment="Top" Width="123"/>
         <Label Content="Invested amount:" HorizontalAlignment="Left" Margin="22,269,0,0" VerticalAlignment="Top" Width="123"/>
         <Label Content="Coin Amount:" HorizontalAlignment="Left" Margin="22,223,0,0" VerticalAlignment="Top" Width="123"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="176,227,0,0" TextWrapping="Wrap" Text="{Binding CoinAmount}" VerticalAlignment="Top" Width="300"/>
     </Grid>
 </Window>

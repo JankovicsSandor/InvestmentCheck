@@ -6,11 +6,37 @@ using System.Threading.Tasks;
 
 namespace InvestmentCheck.Models
 {
-    public class Investment:Bindable
+    public class Investment : Bindable
     {
         public DateTime Date { get; set; }
         public double Amount { get; set; }
         public string CoinType { get; set; }
+
+        private bool isNegative;
+
+        public bool IsNegative
+        {
+            get { return isNegative; }
+            set
+            {
+                SetProperty(ref isNegative, value);
+                OnPropertyChanged(nameof(isNegative));
+            }
+        }
+
+
+        private double currentPrice;
+
+        public double CurrentPrice
+        {
+            get { return currentPrice; }
+            set
+            {
+                SetProperty(ref currentPrice, value);
+                OnPropertyChanged(nameof(currentPrice));
+            }
+        }
+
 
         private double pricePerCoin;
 
@@ -21,6 +47,7 @@ namespace InvestmentCheck.Models
             {
                 SetProperty(ref pricePerCoin, value);
                 OnPropertyChanged(nameof(pricePerCoin));
+                this.IsNegative = pricePerCoin < currentPrice;
             }
         }
 
@@ -49,6 +76,11 @@ namespace InvestmentCheck.Models
                 SetProperty(ref investAmount, value);
                 OnPropertyChanged(nameof(investAmount));
             }
+        }
+
+        public Investment()
+        {
+            this.CurrentPrice = 10;
         }
     }
 }
