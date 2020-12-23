@@ -7,10 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Refresh price" HorizontalAlignment="Left" Margin="665,69,0,0" VerticalAlignment="Top" Width="117" Height="40"/>
+        <Button Command="{Binding Path=RefreshListPriceCommand, IsAsync=True}" Content="Refresh price" HorizontalAlignment="Left" Margin="665,69,0,0" VerticalAlignment="Top" Width="117" Height="40"/>
         <ListBox ItemsSource="{Binding Path=InvestmentList}" HorizontalContentAlignment="Stretch" Margin="10,10,140,21">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
+                    <Setter Property="Focusable" Value="False"/>
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding Path=IsNegative}" Value="True">
                             <Setter Property="Background" Value="Green" />
@@ -32,6 +33,7 @@
                                 <ColumnDefinition Width="100"></ColumnDefinition>
                                 <ColumnDefinition Width="100"></ColumnDefinition>
                                 <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0">Date</Label>
                             <Label Grid.Column="1">Coin</Label>
@@ -39,6 +41,7 @@
                             <Label Grid.Column="3">Price Per coin</Label>
                             <Label Grid.Column="4">Investment Value</Label>
                             <Label Grid.Column="5">Invest amount</Label>
+                            <Label Grid.Column="6">Current price</Label>
                         </Grid>
                         <ItemsPresenter></ItemsPresenter>
                     </DockPanel>
@@ -54,6 +57,7 @@
                             <ColumnDefinition Width="100"></ColumnDefinition>
                             <ColumnDefinition Width="100"></ColumnDefinition>
                             <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Label Content="{Binding Path=Date}" Grid.Column="0"></Label>
                         <Label Content="{Binding Path=CoinType}" Grid.Column="1"></Label>
@@ -61,6 +65,7 @@
                         <Label Content="{Binding Path=PricePerCoin}" Grid.Column="3"></Label>
                         <Label Content="{Binding Path=InvestmentValue}" Grid.Column="4"></Label>
                         <Label Content="{Binding Path=InvestedAmound}" Grid.Column="5"></Label>
+                        <Label Content="{Binding Path=CurrentPrice}" Grid.Column="6"></Label>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

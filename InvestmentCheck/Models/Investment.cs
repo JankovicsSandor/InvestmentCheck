@@ -34,6 +34,7 @@ namespace InvestmentCheck.Models
             {
                 SetProperty(ref currentPrice, value);
                 OnPropertyChanged(nameof(currentPrice));
+                this.IsNegative = pricePerCoin < currentPrice;
             }
         }
 
@@ -47,7 +48,6 @@ namespace InvestmentCheck.Models
             {
                 SetProperty(ref pricePerCoin, value);
                 OnPropertyChanged(nameof(pricePerCoin));
-                this.IsNegative = pricePerCoin < currentPrice;
             }
         }
 
@@ -80,7 +80,6 @@ namespace InvestmentCheck.Models
 
         public Investment()
         {
-            this.CurrentPrice = 10;
         }
     }
 }

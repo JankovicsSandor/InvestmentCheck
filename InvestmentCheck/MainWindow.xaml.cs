@@ -1,4 +1,5 @@
-﻿using InvestmentCheck.Models;
+﻿using InvestmentCheck.BussinessLogic;
+using InvestmentCheck.Models;
 using InvestmentCheck.NewInvest;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,8 @@ namespace InvestmentCheck
         public ViewModel mainWindowModel;
         public MainWindow()
         {
-            mainWindowModel = new ViewModel();
+            // TODO eliminate depencies VM shoud not know about dependencies
+            mainWindowModel = new ViewModel(new RefreshPriceBussinessLogic());
             this.DataContext = mainWindowModel;
             InitializeComponent();
         }
