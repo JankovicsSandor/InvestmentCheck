@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +16,7 @@ namespace InvestmentCheck.Models
 
         private bool isNegative;
 
+        [JsonIgnore]
         public bool IsNegative
         {
             get { return isNegative; }
@@ -27,6 +30,7 @@ namespace InvestmentCheck.Models
 
         private double currentPrice;
 
+        [JsonIgnore]
         public double CurrentPrice
         {
             get { return currentPrice; }

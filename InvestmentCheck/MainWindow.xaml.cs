@@ -1,4 +1,5 @@
 ﻿using InvestmentCheck.BussinessLogic;
+using InvestmentCheck.BussinessLogic.SaveInvestments;
 using InvestmentCheck.Models;
 using InvestmentCheck.NewInvest;
 using System;
@@ -24,10 +25,13 @@ namespace InvestmentCheck
     public partial class MainWindow : Window
     {
         public ViewModel mainWindowModel;
+        private FileOperationBussinessLogic _fileOperator;
+
         public MainWindow()
         {
             // TODO eliminate depencies VM shoud not know about dependencies
             mainWindowModel = new ViewModel(new RefreshPriceBussinessLogic());
+            _fileOperator = new FileOperationBussinessLogic();
             this.DataContext = mainWindowModel;
             InitializeComponent();
         }
@@ -50,9 +54,21 @@ namespace InvestmentCheck
                         PricePerCoin = double.Parse(resultData.PricePerCoin)
                     };
                     mainWindowModel.InvestmentList.Add(newItem);
+
+                    _fileOperator.SaveInvestmentListToFile(mainWindowModel.InvestmentList);
                 }
-                Console.WriteLine(5);
             }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            // TODO create an asnyc task to avoid blocking call
+            IEnumerable<Investment> savedInvestments = _fileOperator.LoadInvestmentList();
+            foreach (var invest in savedInvestments)
+            {
+                mainWindowModel.InvestmentList.Add(invest);
+            };
+            mainWindowModel.RefreshListPriceCommand.Execute(null);
         }
     }
 }
