@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using InvestmentCheck.BussinessLogic;
+using InvestmentCheck.BussinessLogic.SaveInvestments;
 using InvestmentCheck.Models;
 using System;
 using System.Collections.Generic;
@@ -19,12 +20,20 @@ namespace InvestmentCheck
 
         public ICommand RefreshListPriceCommand { get; private set; }
 
-        public ViewModel(IRefreshPriceBussinessLogic refreshDataLogic)
+        public ICommand SaveFileListCommand { get; private set; }
+
+
+        public ViewModel(IRefreshPriceBussinessLogic refreshDataLogic,IFileOperationBussinessLogic _fileOperator)
         {
             _refreshLogic = refreshDataLogic;
             RefreshListPriceCommand = new RelayCommand(async () =>
             {
                 await _refreshLogic.UpdatePrice(InvestmentList);
+            });
+
+            SaveFileListCommand = new RelayCommand(() =>
+            {
+                _fileOperator.SaveInvestmentListToFile(InvestmentList);
             });
             this.InvestmentList = new BindingList<Investment>();
         }

@@ -25,13 +25,14 @@ namespace InvestmentCheck
     public partial class MainWindow : Window
     {
         public ViewModel mainWindowModel;
-        private FileOperationBussinessLogic _fileOperator;
+        private IFileOperationBussinessLogic _fileOperator;
 
         public MainWindow()
         {
-            // TODO eliminate depencies VM shoud not know about dependencies
-            mainWindowModel = new ViewModel(new RefreshPriceBussinessLogic());
             _fileOperator = new FileOperationBussinessLogic();
+            // TODO eliminate depencies VM shoud not know about dependencies
+            mainWindowModel = new ViewModel(new RefreshPriceBussinessLogic(),_fileOperator);
+            
             this.DataContext = mainWindowModel;
             InitializeComponent();
         }

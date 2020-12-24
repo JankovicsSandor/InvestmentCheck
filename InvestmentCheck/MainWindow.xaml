@@ -72,6 +72,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <Button Content="Add new" Click="CreateNewInvestment" Margin="0,321,10,0" VerticalAlignment="Top" Height="38" HorizontalAlignment="Right" Width="119"/>
+        <Button Command="{Binding Path=SaveFileListCommand}"  Content="Save" Margin="0,174,10,0" VerticalAlignment="Top" Height="40" HorizontalAlignment="Right" Width="117"/>
 
     </Grid>
 </Window>
