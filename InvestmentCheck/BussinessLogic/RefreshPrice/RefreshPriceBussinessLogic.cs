@@ -40,7 +40,8 @@ namespace InvestmentCheck.BussinessLogic
         }
 
         //TODO move it as a background process
-        public async Task UpdatePrice(IEnumerable<Investment> investments)
+
+        public async Task<double> UpdatePrice(IEnumerable<Investment> investments)
         {
             foreach (var priceItem in priceDictionary.ToList())
             {
@@ -61,7 +62,8 @@ namespace InvestmentCheck.BussinessLogic
             {
                 investment.CurrentPrice = priceDictionary[investment.CoinType];
             }
-        }
 
+            return investments.Sum(e => e.InvestmentValue);
+        }
     }
 }

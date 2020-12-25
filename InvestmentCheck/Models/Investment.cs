@@ -45,6 +45,9 @@ namespace InvestmentCheck.Models
 
         private double pricePerCoin;
 
+        /// <summary>
+        /// Gets or sets the price of the coin at the time of investment
+        /// </summary>
         public double PricePerCoin
         {
             get { return pricePerCoin; }
@@ -57,6 +60,9 @@ namespace InvestmentCheck.Models
 
         private double investmentValue;
 
+        /// <summary>
+        /// Gets or sets the actual value of investment
+        /// </summary>
         public double InvestmentValue
         {
             get
@@ -72,7 +78,10 @@ namespace InvestmentCheck.Models
 
         private int investAmount;
 
-        public int InvestedAmound
+        /// <summary>
+        /// Gets or sets the total price invested (coin price+ transaction fee)
+        /// </summary>
+        public int InvestedAmount
         {
             get { return investAmount; }
             set

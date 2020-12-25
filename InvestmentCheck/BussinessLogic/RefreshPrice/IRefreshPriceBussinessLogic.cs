@@ -6,6 +6,6 @@ namespace InvestmentCheck.BussinessLogic
 {
     public interface IRefreshPriceBussinessLogic
     {
-        Task UpdatePrice(IEnumerable<Investment> investments);
+        Task<double> UpdatePrice(IEnumerable<Investment> investments);
     }
 }

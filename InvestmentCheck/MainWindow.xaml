@@ -7,9 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         Loaded="Window_Loaded">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </Window.Resources>
     <Grid>
         <Button Command="{Binding Path=RefreshListPriceCommand}" Content="Refresh price" Margin="0,69,10,0" VerticalAlignment="Top" Height="40" HorizontalAlignment="Right" Width="117"/>
-        <ListBox ItemsSource="{Binding Path=InvestmentList}" HorizontalContentAlignment="Stretch" Margin="10,10,140,21">
+        <ListBox ItemsSource="{Binding Path=InvestmentList}" HorizontalContentAlignment="Stretch" Margin="10,10,140,60">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Focusable" Value="False"/>
@@ -65,7 +68,7 @@
                         <Label Content="{Binding Path=Amount}" Grid.Column="2"></Label>
                         <Label Content="{Binding Path=PricePerCoin}" Grid.Column="3"></Label>
                         <Label Content="{Binding Path=InvestmentValue}" Grid.Column="4"></Label>
-                        <Label Content="{Binding Path=InvestedAmound}" Grid.Column="5"></Label>
+                        <Label Content="{Binding Path=InvestedAmount}" Grid.Column="5"></Label>
                         <Label Content="{Binding Path=CurrentPrice}" Grid.Column="6"></Label>
                     </Grid>
                 </DataTemplate>
@@ -73,6 +76,17 @@
         </ListBox>
         <Button Content="Add new" Click="CreateNewInvestment" Margin="0,321,10,0" VerticalAlignment="Top" Height="38" HorizontalAlignment="Right" Width="119"/>
         <Button Command="{Binding Path=SaveFileListCommand}"  Content="Save" Margin="0,174,10,0" VerticalAlignment="Top" Height="40" HorizontalAlignment="Right" Width="117"/>
+        <StatusBar  Height="35" Margin="0,384,0,0">
+            <StackPanel Orientation="Horizontal" Width="767">
+                <Label Content="Total Investment Amount" Width="152" Height="26"/>
+                <Label Content="{Binding Path=TotalInvestedValue,StringFormat={}{0} EUR}" Width="62" Height="26"/>
+                <Label Content="Current value of investment" Width="164" Height="26"/>
+                <Label Content="{Binding Path=TotalActualValue,StringFormat={}{0} EUR}" Width="216" Height="26"/>
+                <ProgressBar Height="14" IsIndeterminate="True" Visibility="{Binding ShowProgressBar, Converter={StaticResource BoolToVis}}" Margin="0,0,606,0" Width="160"/>
+            </StackPanel>
+        </StatusBar>
+        <Label Content="Last update:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="665,236,0,0" Width="117"/>
+        <Label Content="{Binding Path=LastUpdateTime}" HorizontalAlignment="Left" Margin="665,267,0,0" VerticalAlignment="Top" Height="26" Width="117"/>
 
     </Grid>
 </Window>
