@@ -14,7 +14,7 @@ namespace InvestmentCheck
 {
     public class ViewModel : Bindable
     {
-        private int updateScheduleTimeInSec = 10;
+        private int updateScheduleTimeInSec = 60;
         private IRefreshPriceBussinessLogic _refreshLogic;
         private bool showProgressbar;
 
