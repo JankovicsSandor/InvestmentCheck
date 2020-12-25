@@ -23,7 +23,7 @@ namespace InvestmentCheck
         public ICommand SaveFileListCommand { get; private set; }
 
 
-        public ViewModel(IRefreshPriceBussinessLogic refreshDataLogic,IFileOperationBussinessLogic _fileOperator)
+        public ViewModel(IRefreshPriceBussinessLogic refreshDataLogic, IFileOperationBussinessLogic _fileOperator)
         {
             _refreshLogic = refreshDataLogic;
             RefreshListPriceCommand = new RelayCommand(async () =>
