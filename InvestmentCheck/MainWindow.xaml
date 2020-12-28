@@ -85,7 +85,7 @@
                 <ProgressBar Height="14" IsIndeterminate="True" Visibility="{Binding ShowProgressBar, Converter={StaticResource BoolToVis}}" Margin="0,0,606,0" Width="160"/>
             </StackPanel>
         </StatusBar>
-        <Label Content="Last update:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="665,236,0,0" Width="117"/>
+        <Label Content="Last update:" VerticalAlignment="Top" Margin="665,236,10,0"/>
         <Label Content="{Binding Path=LastUpdateTime}" HorizontalAlignment="Left" Margin="665,267,0,0" VerticalAlignment="Top" Height="26" Width="117"/>
 
     </Grid>
